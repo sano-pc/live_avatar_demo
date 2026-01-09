@@ -3,19 +3,126 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LiveAvatar Demo</title>
+  <title>Live Avatar Demo</title>
+  <meta name="description" content="Live Avatar Demo" />
   <style>
-    html, body { height: 100%; margin: 0; }
-    .wrap { height: 100%; display: grid; place-items: center; }
-    iframe { width: min(1200px, 96vw); aspect-ratio: 16 / 9; border: 0; }
+    :root {
+      --bg1: #0b1220;
+      --bg2: #101b34;
+      --card: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.14);
+      --text: rgba(255, 255, 255, 0.92);
+      --muted: rgba(255, 255, 255, 0.70);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans JP", sans-serif; }
+    body {
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 10%, #1e3a8a55, transparent 60%),
+        radial-gradient(1000px 500px at 90% 30%, #7c3aed44, transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 18px 48px;
+    }
+
+    header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(22px, 3vw, 34px);
+      letter-spacing: 0.2px;
+    }
+
+    .badge {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+      white-space: nowrap;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      backdrop-filter: blur(12px);
+    }
+
+    .desc {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .frame-wrap {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.25);
+    }
+
+    iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+    }
+
+    footer {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    a { color: rgba(255,255,255,0.85); }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <iframe
-      src="https://embed.liveavatar.com/v1/15dad91e-2eed-4eb3-8643-1b08a0bb3ab9"
-      allow="microphone"
-      title="LiveAvatar Embed"></iframe>
+  <div class="container">
+    <header>
+      <h1>Live Avatar Demo</h1>
+      <div class="badge">Mic permission required</div>
+    </header>
+
+    <div class="card">
+      <p class="desc">
+        このページは LiveAvatar の埋め込みデモです。マイク利用の許可を求められたら「許可」を選んでください。
+      </p>
+
+      <div class="frame-wrap">
+        <iframe
+          src="https://embed.liveavatar.com/v1/15dad91e-2eed-4eb3-8643-1b08a0bb3ab9"
+          allow="microphone"
+          title="LiveAvatar Embed"></iframe>
+      </div>
+
+      <footer>
+        <span>© Demo</span>
+        <span>•</span>
+        <span>Powered by LiveAvatar</span>
+      </footer>
+    </div>
   </div>
 </body>
 </html>
